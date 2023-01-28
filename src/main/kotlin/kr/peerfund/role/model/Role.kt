@@ -5,6 +5,7 @@ package kr.peerfund.role.model
 import com.fasterxml.jackson.annotation.JsonIgnore
 import kr.peerfund.role.dto.RoleType
 import kr.peerfund.user.model.User
+import kr.peerfund.util.BaseEntity
 import org.hibernate.annotations.DynamicInsert
 import javax.persistence.*
 
@@ -16,4 +17,4 @@ class Role(
     @Column(name = "description") var description: String? = null,
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY) @JsonIgnore var users: MutableSet<User>? = null,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
-)
+): BaseEntity()

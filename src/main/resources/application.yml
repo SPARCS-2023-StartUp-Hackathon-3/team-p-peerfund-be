@@ -8,15 +8,17 @@ spring:
     hikari:
       connection-test-query: SELECT 1
     initialization-mode: always
-    data:
-      - classpath:schema.sql
-      - classpath:init_role.sql
+#    data:
+#      - classpath:schema.sql
+#      - classpath:init_role.sql
   jpa:
     show-sql: true
     generate-ddl: false
     database: mysql
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
+      hbm2ddl:
+        import_files: 'classpath:init_role.sql' # DB 파일 명시적으로 선택
       use-new-id-generator-mappings: true
     properties:
       hibernate:
