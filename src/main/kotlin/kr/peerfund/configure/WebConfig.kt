@@ -107,7 +107,6 @@ class WebConfig(
                 "Content-Disposition"
             )
             allowedOrigins = listOf(
-                "*",
                 "http://peerfund.hackathon.sparcs.org",
                 "http://localhost",
                 "http://localhost:3000",
@@ -124,7 +123,6 @@ class WebConfig(
                 "http://localhost:3000",
                 "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com",
                 "http://peerfund.hackathon.sparcs.org",
-                "*"
             )
             .allowedMethods("*")
             .allowedOriginPatterns("*")
