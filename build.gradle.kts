@@ -40,6 +40,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.hibernate.validator:hibernate-validator")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+    implementation("com.amazonaws:aws-java-sdk:1.12.394")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
     implementation("io.springfox:springfox-boot-starter:${swaggerVersion}")
@@ -74,7 +75,7 @@ tasks.withType<Test> {
 
 flyway {
     url =
-        "jdbc:mysql://127.0.0.1:3306/test_mvc?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul"
+        "jdbc:mysql://127.0.0.1:3306/peerfund?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul"
     user = "root"
     password = "root"
 }

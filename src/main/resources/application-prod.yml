@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://team-p.cyabzp8jcj3s.ap-northeast-2.rds.amazonaws.com:3306/peerfund
+    username: sparcs
+    password: v9^MXNVd#QcG^9(j
