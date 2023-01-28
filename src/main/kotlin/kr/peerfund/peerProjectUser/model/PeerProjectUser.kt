@@ -13,6 +13,6 @@ class PeerProjectUser(
     @ManyToOne(fetch = FetchType.LAZY)
     val projectUser: User,
 
-    @Id @Column val id: Long = 0L,
+    @Id @GeneratedValue val id: Long = 0L,
 ): BaseEntity() {
 }

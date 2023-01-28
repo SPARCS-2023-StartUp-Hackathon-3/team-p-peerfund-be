@@ -20,7 +20,7 @@ class PeerProjectController(
     ): ResponseEntity<ResponseMessage> {
         return try {
             peerProjectService.createPeerProject(requestProjectDto)
-            ResponseEntity(HttpStatus.OK)
+            ResponseEntity.status(HttpStatus.OK).body(ResponseMessage("프로젝트 생성 성공"))
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ResponseMessage(e.message))
         }

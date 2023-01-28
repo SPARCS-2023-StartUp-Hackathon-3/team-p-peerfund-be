@@ -2,6 +2,7 @@ package kr.peerfund.peerRroject.model
 
 import kr.peerfund.peerProjectUser.model.PeerProjectUser
 import kr.peerfund.peerRroject.dto.ProjectType
+import kr.peerfund.peering.model.Peering
 import kr.peerfund.user.model.User
 import kr.peerfund.util.BaseEntity
 import javax.persistence.*
@@ -13,7 +14,7 @@ class PeerProject(
     val projectType: ProjectType,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val projectOwner: User,
+    var projectOwner: User?,
 
     @Column
     var title: String,
@@ -33,13 +34,23 @@ class PeerProject(
     @Column
     val tagString: String? = null,
 
+    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val peeringList: MutableList<Peering> = mutableListOf(),
+
+    @Column
+    var deposit: Int = 0,
+
     @OneToMany(mappedBy = "peerProject")
     val projectUserList: MutableList<PeerProjectUser> = mutableListOf(),
 
-    @Id
-    @Column
+    @Id @GeneratedValue
     var id: Long = 0,
 ): BaseEntity() {
+
+    fun addPeering(peering: Peering) {
+        peering.project = this
+        this.peeringList.add(peering)
+    }
 
     fun toDto() {
      //TODO

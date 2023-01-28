@@ -47,7 +47,7 @@ class WebConfig(
         web.ignoring()
             .mvcMatchers("/auth/sign-up")
             .mvcMatchers("/aws/**")
-//            .mvcMatchers("/**")
+            .mvcMatchers("/**")
         web.ignoring()
             .requestMatchers(toStaticResources().atCommonLocations()); // 정적인 리소스들에 대해서 시큐리티 적용 무시.
     }
