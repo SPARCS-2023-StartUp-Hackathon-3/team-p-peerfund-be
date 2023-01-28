@@ -90,7 +90,6 @@ class WebConfig(
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource = UrlBasedCorsConfigurationSource().also { cors ->
         CorsConfiguration().apply {
-            allowedOrigins = listOf("*")
             allowedMethods = listOf("POST", "PUT", "DELETE", "GET", "OPTIONS", "HEAD")
             allowedHeaders = listOf(
                 securityProperties.headerString,
@@ -108,10 +107,11 @@ class WebConfig(
                 "Content-Disposition"
             )
             allowedOrigins = listOf(
-                "http://localhost/",
+                "*",
+                "http://peerfund.hackathon.sparcs.org",
+                "http://localhost",
                 "http://localhost:3000",
-                "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/",
-                "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/80",
+                "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com",
             )
             maxAge = 3600
             cors.registerCorsConfiguration("/**", this)
@@ -120,7 +120,12 @@ class WebConfig(
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://localhost:3000", "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com", "*")
+            .allowedOrigins(
+                "http://localhost:3000",
+                "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com",
+                "http://peerfund.hackathon.sparcs.org",
+                "*"
+            )
             .allowedMethods("*")
             .allowedOriginPatterns("*")
             .allowCredentials(true)
@@ -132,11 +137,12 @@ class WebConfig(
         val config = CorsConfiguration()
         config.allowCredentials = true
         config.addAllowedOrigin("http://localhost")
+        config.addAllowedOrigin("http://peerfund.hackathon.sparcs.org")
         config.addAllowedOrigin("http://localhost:3000")
         config.addAllowedOrigin("http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com")
         config.addAllowedHeader("*")
         config.addAllowedMethod("*")
-        config.addExposedHeader("X-AUTH-TOKEN")
+        config.addExposedHeader("Authorization")
         source.registerCorsConfiguration("/**", config)
         return CorsFilter(source)
     }
