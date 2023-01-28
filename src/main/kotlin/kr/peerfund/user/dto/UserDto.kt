@@ -4,7 +4,7 @@ import kr.peerfund.user.model.User
 
 data class UserDto(
     val id: Long,
-    val username: String,
+    val userName: String,
 ) {
     companion object {
         fun from(user: User): UserDto {
