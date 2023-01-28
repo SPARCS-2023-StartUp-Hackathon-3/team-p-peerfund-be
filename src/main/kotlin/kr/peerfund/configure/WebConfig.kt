@@ -120,7 +120,7 @@ class WebConfig(
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://localhost", "http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com")
+            .allowedOrigins("http://localhost:3000", "http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com", "*")
             .allowedMethods("*")
             .allowedOriginPatterns("*")
             .allowCredentials(true)
@@ -133,8 +133,7 @@ class WebConfig(
         config.allowCredentials = true
         config.addAllowedOrigin("http://localhost")
         config.addAllowedOrigin("http://localhost:3000")
-        config.addAllowedOrigin("http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/")
-        config.addAllowedOrigin("http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/80")
+        config.addAllowedOrigin("http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com")
         config.addAllowedHeader("*")
         config.addAllowedMethod("*")
         config.addExposedHeader("X-AUTH-TOKEN")
