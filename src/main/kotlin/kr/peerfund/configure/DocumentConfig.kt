@@ -3,7 +3,6 @@ package kr.peerfund.configure
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpHeaders
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import springfox.documentation.builders.ApiInfoBuilder
 import springfox.documentation.builders.PathSelectors
 import springfox.documentation.builders.RequestHandlerSelectors
@@ -13,7 +12,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext
 import springfox.documentation.spring.web.plugins.Docket
 
 @Configuration
-class DocumentConfig : WebMvcConfigurer {
+class DocumentConfig {
     fun apiKey(): ApiKey? {
         return ApiKey("JWT", HttpHeaders.AUTHORIZATION, "header")
     }

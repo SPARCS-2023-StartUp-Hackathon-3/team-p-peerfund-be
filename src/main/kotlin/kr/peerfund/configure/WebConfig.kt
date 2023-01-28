@@ -22,6 +22,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+import org.springframework.web.filter.CorsFilter
+import org.springframework.web.servlet.config.annotation.CorsRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
 @EnableWebSecurity
@@ -29,7 +32,7 @@ class WebConfig(
     val bCryptPasswordEncoder: BCryptPasswordEncoder,
     val userDetailsService: AppUserDetailsService,
     val securityProperties: SecurityProperties
-) : WebSecurityConfigurerAdapter() {
+) : WebSecurityConfigurerAdapter(), WebMvcConfigurer {
 
     @Bean
     override fun authenticationManagerBean(): AuthenticationManager = super.authenticationManagerBean()
@@ -113,5 +116,29 @@ class WebConfig(
             maxAge = 3600
             cors.registerCorsConfiguration("/**", this)
         }
+    }
+
+    override fun addCorsMappings(registry: CorsRegistry) {
+        registry.addMapping("/**")
+            .allowedOrigins("http://localhost", "http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com")
+            .allowedMethods("*")
+            .allowedOriginPatterns("*")
+            .allowCredentials(true)
+    }
+
+    @Bean
+    fun corsFilter(): CorsFilter {
+        val source = UrlBasedCorsConfigurationSource()
+        val config = CorsConfiguration()
+        config.allowCredentials = true
+        config.addAllowedOrigin("http://localhost")
+        config.addAllowedOrigin("http://localhost:3000")
+        config.addAllowedOrigin("http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/")
+        config.addAllowedOrigin("http://http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/80")
+        config.addAllowedHeader("*")
+        config.addAllowedMethod("*")
+        config.addExposedHeader("X-AUTH-TOKEN")
+        source.registerCorsConfiguration("/**", config)
+        return CorsFilter(source)
     }
 }
