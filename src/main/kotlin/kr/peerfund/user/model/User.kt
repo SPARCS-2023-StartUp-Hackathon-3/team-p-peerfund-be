@@ -3,7 +3,10 @@
 package kr.peerfund.user.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kr.peerfund.peerProjectUser.model.PeerProjectUser
+import kr.peerfund.peerRroject.model.PeerProject
 import kr.peerfund.role.model.Role
+import kr.peerfund.util.BaseEntity
 import org.hibernate.annotations.DynamicInsert
 import javax.persistence.*
 
@@ -25,6 +28,12 @@ class User(
     @Column(name = "name", nullable = false)
     var name: String,
 
+    @OneToMany(mappedBy = "projectUser")
+    var peerProjectList: MutableList<PeerProjectUser> = mutableListOf(),
+
+    @OneToMany(mappedBy = "projectOwner", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val ownerProjectList: MutableList<PeerProject> = mutableListOf(),
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinTable(
         name = "user_role",
@@ -32,5 +41,11 @@ class User(
         inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")]
     )
     var roles: Set<Role> = mutableSetOf()
-)
+) : BaseEntity() {
+
+    fun addOwnerProject(peerProject: PeerProject) {
+        peerProject.projectOwner = this
+        this.ownerProjectList.add(peerProject)
+    }
+}
 
