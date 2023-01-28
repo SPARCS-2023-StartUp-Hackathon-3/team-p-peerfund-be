@@ -32,7 +32,7 @@ class AwsS3UploadService(
             "" -> "image/jpeg"
             else -> throw IllegalArgumentException("${extension}은 이미지 확장자가 아닙니다.")
         }
-        val bytes = IOUtils.toByteArray(multipartFile.inputStream)
+        val bytes = IOUtils.toByteArray(inputStream)
         metadata.contentType = "application/$postfix"
         metadata.contentLength = bytes.size.toLong()
         putObject(bucket!!, fileName, ByteArrayInputStream(bytes), metadata)

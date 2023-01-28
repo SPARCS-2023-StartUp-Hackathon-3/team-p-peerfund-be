@@ -31,8 +31,6 @@ spring:
     locations: classpath:/db/migration
     baseline-version: 1
   aws:
-    access-key: AKIATVRAJUBDSFUNZ5PP
-    secret-key: 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
     region: ap-northeast-2
     bucket: sparcs-2023-startup-hackathon-p-2
     url: s3://sparcs-2023-startup-hackathon-p-2/
@@ -54,5 +52,4 @@ springfox:
         path: /v2/api-docs
 
 jwt-security:
-  secret: PseudoSecret-Pseudosecret-Please-Use-Ur
   expiration-time: 365

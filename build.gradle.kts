@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.jpa") version "1.6.10"
     kotlin("kapt") version "1.6.10"
     id("org.flywaydb.flyway") version "7.8.2"
+    id("com.google.cloud.tools.jib") version "3.1.2"
 }
 
 group = "kr.peerfund"
@@ -78,4 +79,17 @@ flyway {
         "jdbc:mysql://127.0.0.1:3306/peerfund?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul"
     user = "root"
     password = "root"
+}
+
+jib {
+    from {
+        image = "adoptopenjdk/openjdk11:x86_64-ubuntu-jre-11.0.18_10"
+    }
+    to {
+        image = "peerfund/backend"
+        tags = mutableSetOf("latest")
+    }
+    container {
+        jvmFlags = mutableListOf("-Xms2048m", "-Xmx2048m")
+    }
 }
