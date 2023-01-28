@@ -5,20 +5,27 @@ import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.services.s3.AmazonS3ClientBuilder
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 class AwsConfig {
+    private val logger = LoggerFactory.getLogger(this::class.simpleName)
+
     @Value("\${spring.aws.access-key}")
     val accessKey: String = ""
+
     @Value("\${spring.aws.secret-key}")
     val secretKey: String = ""
+
     @Value("\${spring.aws.region}")
     val region: String = ""
+
     @Value("\${spring.aws.bucket}")
     val buket: String = ""
+
     @Value("\${spring.aws.url}")
     val url: String = ""
 
