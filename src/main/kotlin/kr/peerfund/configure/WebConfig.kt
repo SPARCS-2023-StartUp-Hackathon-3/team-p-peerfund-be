@@ -104,6 +104,7 @@ class WebConfig(
                 securityProperties.headerString,
                 "Content-Disposition"
             )
+            allowedOrigins = listOf("http://localhost:3000, http://ec2-54-180-159-18.ap-northeast-2.compute.amazonaws.com/")
             maxAge = 3600
             cors.registerCorsConfiguration("/**", this)
         }
