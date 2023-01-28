@@ -36,6 +36,8 @@ spring:
     url: s3://sparcs-2023-startup-hackathon-p-2/
   profiles:
     active: prod # local, prod
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
 springdoc:
   swagger-ui:
