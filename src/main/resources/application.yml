@@ -8,7 +8,7 @@ spring:
     hikari:
       connection-test-query: SELECT 1
     initialization-mode: always
-    data:
+#    data:
 #      - classpath:schema.sql
 #      - classpath:init_role.sql
   jpa:

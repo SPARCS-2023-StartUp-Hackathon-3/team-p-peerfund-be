@@ -46,6 +46,8 @@ class WebConfig(
     override fun configure(web: WebSecurity) {
         web.ignoring()
             .mvcMatchers("/auth/sign-up")
+            .mvcMatchers("/aws/**")
+//            .mvcMatchers("/**")
         web.ignoring()
             .requestMatchers(toStaticResources().atCommonLocations()); // 정적인 리소스들에 대해서 시큐리티 적용 무시.
     }

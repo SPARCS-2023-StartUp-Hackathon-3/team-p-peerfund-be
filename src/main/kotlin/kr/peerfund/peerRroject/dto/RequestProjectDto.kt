@@ -8,7 +8,7 @@ data class RequestProjectDto(
     val projectType: ProjectType,
     val title: String,
     val introduce: String,
-    val thumbnailImage: String,
+    val thumbnailImageUrl: String,
     val introduceUrlLink: String,
     val tagString: String,
 ) {
@@ -18,7 +18,7 @@ data class RequestProjectDto(
             projectOwner = owner,
             title = this.title,
             introduce = this.introduce,
-            thumbnailImage = this.thumbnailImage,
+            thumbnailImage = thumbnailImageUrl,
             introduceUrlLink = this.introduceUrlLink,
             tagString = this.tagString,
         )
