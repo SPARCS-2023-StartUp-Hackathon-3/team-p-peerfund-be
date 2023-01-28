@@ -52,7 +52,7 @@ class WebConfig(
 
     override fun configure(http: HttpSecurity) {
         http
-            .cors().and()
+            .cors().configurationSource(corsConfigurationSource()).and()
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // no sessions
             .and()
