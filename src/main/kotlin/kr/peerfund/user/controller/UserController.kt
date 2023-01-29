@@ -1,6 +1,5 @@
 package kr.peerfund.user.controller
 
-import io.swagger.annotations.Api
 import javassist.NotFoundException
 import kr.peerfund.jwt.dto.UserDetailsPrincipal
 import kr.peerfund.user.dto.UserDto
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@Api(value = "USER")
 @RestController
 @RequestMapping("/user")
 class UserController(

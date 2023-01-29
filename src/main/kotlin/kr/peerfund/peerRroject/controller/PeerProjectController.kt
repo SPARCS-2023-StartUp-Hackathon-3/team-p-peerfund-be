@@ -1,6 +1,5 @@
 package kr.peerfund.peerRroject.controller
 
-import io.swagger.annotations.Api
 import kr.peerfund.dto.ResponseMessage
 import kr.peerfund.peerRroject.dto.RequestProjectDto
 import kr.peerfund.peerRroject.service.PeerProjectService
@@ -8,7 +7,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@Api(value = "PeerProject")
 @RestController
 @RequestMapping("/peerProject")
 class PeerProjectController(
