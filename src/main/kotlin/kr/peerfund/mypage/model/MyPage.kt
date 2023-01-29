@@ -1,8 +1,10 @@
 package kr.peerfund.mypage.model
 
-import kr.peerfund.user.model.User
 import kr.peerfund.util.BaseEntity
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
 class MyPage(
@@ -26,9 +28,6 @@ class MyPage(
 
     @Column
     val experience: String?,
-
-    @OneToOne(mappedBy = "myPage")
-    var user: User?,
 
     @Id @GeneratedValue var id: Long = 0L
 ):BaseEntity() {

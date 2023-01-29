@@ -35,9 +35,6 @@ class User(
     @OneToMany(mappedBy = "projectOwner", cascade = [CascadeType.ALL], orphanRemoval = true)
     val ownerProjectList: MutableList<PeerProject> = mutableListOf(),
 
-    @OneToOne(cascade = [CascadeType.ALL])
-    var myPage: MyPage? = null,
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinTable(
         name = "user_role",
@@ -53,8 +50,7 @@ class User(
     }
 
     fun createMyPage(myPage: MyPage) {
-        myPage.user = this
-        this.myPage = myPage
+
     }
 }
 

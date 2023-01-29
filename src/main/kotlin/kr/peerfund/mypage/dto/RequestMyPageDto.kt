@@ -20,7 +20,6 @@ data class RequestMyPageDto(
             this.introduce,
             this.skills,
             this.experience,
-            null,
         )
     }
 }
