@@ -1,4 +1,4 @@
-package kr.peerfund.peerProjectUser.model
+package kr.peerfund.peerprojectUser.model
 
 import kr.peerfund.peerRroject.model.PeerProject
 import kr.peerfund.user.model.User

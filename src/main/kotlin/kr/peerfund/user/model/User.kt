@@ -3,8 +3,8 @@
 package kr.peerfund.user.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kr.peerfund.peerProjectUser.model.PeerProjectUser
 import kr.peerfund.peerRroject.model.PeerProject
+import kr.peerfund.peerprojectUser.model.PeerProjectUser
 import kr.peerfund.role.model.Role
 import kr.peerfund.util.BaseEntity
 import org.hibernate.annotations.DynamicInsert

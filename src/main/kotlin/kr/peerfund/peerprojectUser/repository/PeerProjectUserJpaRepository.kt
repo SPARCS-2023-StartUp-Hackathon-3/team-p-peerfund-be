@@ -1,6 +1,6 @@
-package kr.peerfund.peerProjectUser.repository
+package kr.peerfund.peerprojectUser.repository
 
-import kr.peerfund.peerProjectUser.model.PeerProjectUser
+import kr.peerfund.peerprojectUser.model.PeerProjectUser
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PeerProjectUserJpaRepository : JpaRepository<PeerProjectUser, Long> {

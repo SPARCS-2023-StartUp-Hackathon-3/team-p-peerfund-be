@@ -1,8 +1,8 @@
 package kr.peerfund.peerRroject.model
 
-import kr.peerfund.peerProjectUser.model.PeerProjectUser
 import kr.peerfund.peerRroject.dto.ProjectType
 import kr.peerfund.peering.model.Peering
+import kr.peerfund.peerprojectUser.model.PeerProjectUser
 import kr.peerfund.user.model.User
 import kr.peerfund.util.BaseEntity
 import javax.persistence.*
