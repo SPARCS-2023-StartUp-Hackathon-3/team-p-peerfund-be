@@ -4,6 +4,7 @@ import kr.peerfund.role.dto.RoleType
 import kr.peerfund.role.model.Role
 import kr.peerfund.role.repository.RoleJpaRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class RoleService(private val roleJpaRepository: RoleJpaRepository) {
@@ -11,6 +12,7 @@ class RoleService(private val roleJpaRepository: RoleJpaRepository) {
         return roleJpaRepository.findByRoleType(roleType)
     }
 
+    @Transactional
     fun saveRole(roleType: RoleType): Role {
         return roleJpaRepository.save(
             Role(

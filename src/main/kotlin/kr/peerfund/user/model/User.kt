@@ -3,6 +3,7 @@
 package kr.peerfund.user.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kr.peerfund.mypage.model.MyPage
 import kr.peerfund.peerRroject.model.PeerProject
 import kr.peerfund.peerprojectUser.model.PeerProjectUser
 import kr.peerfund.role.model.Role
@@ -34,6 +35,9 @@ class User(
     @OneToMany(mappedBy = "projectOwner", cascade = [CascadeType.ALL], orphanRemoval = true)
     val ownerProjectList: MutableList<PeerProject> = mutableListOf(),
 
+    @OneToOne(cascade = [CascadeType.ALL])
+    var myPage: MyPage? = null,
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinTable(
         name = "user_role",
@@ -46,6 +50,11 @@ class User(
     fun addOwnerProject(peerProject: PeerProject) {
         peerProject.projectOwner = this
         this.ownerProjectList.add(peerProject)
+    }
+
+    fun createMyPage(myPage: MyPage) {
+        myPage.user = this
+        this.myPage = myPage
     }
 }
 

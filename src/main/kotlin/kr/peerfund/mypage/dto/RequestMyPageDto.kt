@@ -19,7 +19,8 @@ data class RequestMyPageDto(
             this.portfolioLink,
             this.introduce,
             this.skills,
-            this.experience
+            this.experience,
+            null,
         )
     }
 }
