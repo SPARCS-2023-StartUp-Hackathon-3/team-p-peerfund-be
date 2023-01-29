@@ -16,7 +16,7 @@ spring:
     generate-ddl: false
     database: mysql
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       use-new-id-generator-mappings: true
     properties:
       hibernate:
